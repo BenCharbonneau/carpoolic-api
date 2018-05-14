@@ -22,7 +22,7 @@ CREATE TABLE rides (
 	passenger_slots SMALLINT NOT NULL
 );
 
-CREATE TABLE ride_slot (
+CREATE TABLE rides_users (
 	id SERIAL PRIMARY KEY,
 	user_id INT REFERENCES users(id),
 	ride_id INT REFERENCES rides(id)

@@ -1,4 +1,3 @@
 class Ride < ActiveRecord::Base
-	has_many :ride_slots
-	has_many :users, :through => :ride_slots
+	has_and_belongs_to_many :users
 end

@@ -48,6 +48,11 @@ class RideController < ApplicationController
 		@ride.pickup_time = @payload[:pickup_time]
 		@ride.driver_user_id = @payload[:driver_user_id]
 		@ride.passenger_slots = @payload[:passenger_slots]
+
+		# this creates a row in the rides_users table to record a driver in the table 
+		@driver = User.find(@payload[:driver_user_id])
+		@ride.users.push(@driver)
+
 		@ride.save
 
 		{

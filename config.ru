@@ -8,7 +8,6 @@ require './controllers/UserController'
 
 # models
 require './models/RideModel'
-require './models/RideSlotModel'
 require './models/UserModel'
 
 
