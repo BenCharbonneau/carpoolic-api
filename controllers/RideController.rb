@@ -27,10 +27,13 @@ class RideController < ApplicationController
 	# show route to show one ride
 	get '/:id' do
 		@ride = Ride.find(params[:id])
+		@passengers = @ride.users
+
 		{
 			success: true,
 			message: "Found ride id #{@ride.id}",
-			found_ride: @ride
+			found_ride: @ride,
+			passenger_ids: @passengers
 		}.to_json
 	end
 
