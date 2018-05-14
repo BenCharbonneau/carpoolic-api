@@ -87,7 +87,7 @@ class RideController < ApplicationController
 
 	end
 
-	# delete, or 'cancel', a ride
+	# delete, or 'cancel', a ride - driver
 	delete '/:id' do
 		@ride = Ride.find params[:id]
 		@ride.destroy
@@ -101,8 +101,29 @@ class RideController < ApplicationController
 		}.to_json
 	end
 
+	# delete, or 'cancel', a ride - passenger
+	delete '/:id/removeuser/:user_id' do
+		@ride = Ride.find params[:id]
+
+		# add to the passenger_slots number
+		@ride.passenger_slots = @ride.passenger_slots + 1
+
+		# finding the user id for the passenger that wants to cancel their ride slot
+		@user = User.find(params[:user_id])
+		@ride.users.destroy(@user)
+
+		{
+			success: true,
+			message: "you deleted user #{@user.username} from ride id \##{@ride.id}",
+			deleted_user: @user,
+			remaining_passengers_slots: @ride.passenger_slots,
+			remaining_passengers_in_ride: @ride.users,
+			current_ride: @ride
+		}.to_json
+	end
+
 	# edit/update a ride
-	# driver's cannot edit destination, driver's ID or pickup date
+	# NOTE: driver's cannot edit destination, driver's ID or pickup date
 	put '/:id' do
 		@rides = Ride.where(id: params[:id])
 
