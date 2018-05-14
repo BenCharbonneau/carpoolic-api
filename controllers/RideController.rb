@@ -36,6 +36,7 @@ class RideController < ApplicationController
 		}.to_json
 	end
 
+	# create a new ride
 	post '/' do
 		pp params
 
@@ -56,6 +57,7 @@ class RideController < ApplicationController
 		}.to_json
 	end
 
+	# delete, or 'cancel', a ride
 	delete '/:id' do
 		@ride = Ride.find params[:id]
 		@ride.destroy
@@ -67,5 +69,23 @@ class RideController < ApplicationController
 		}.to_json
 	end
 
+	# edit/update a ride
+	# driver's cannot edit destination, driver's ID or pickup date
+	put '/:id' do
+		@rides = Ride.where(id: params[:id])
 
+		@ride = @rides[0]
+
+		@ride.name = @payload[:name]
+		@ride.pickup = @payload[:pickup]
+		@ride.pickup_time = @payload[:pickup_time]
+		@ride.passenger_slots = @payload[:passenger_slots]
+		@ride.save
+
+		{
+			success: true,
+			message: "you updated ride id \##{@ride.id}",
+			updated_ride: @ride
+		}.to_json
+	end
 end
