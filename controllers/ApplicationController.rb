@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
 	Bundler.require()
 
 	ActiveRecord::Base.establish_connection(
-		:adapter => 'postgresql'
+		:adapter => 'postgresql',
 		:database => 'carpoolic'
 	)
 
@@ -29,7 +29,7 @@ class ApplicationController < Sinatra::Base
 		{
 			success: false,
 			message: "Please consult the API documentation"
-		}.to_json
+		}
 	end
 
 	not_found do

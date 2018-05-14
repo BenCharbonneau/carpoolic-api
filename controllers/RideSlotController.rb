@@ -1,0 +1,3 @@
+# class RideSlotController < ApplicationController
+
+# end
