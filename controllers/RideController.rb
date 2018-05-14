@@ -8,9 +8,7 @@ class RideController < ApplicationController
     	if(payload_body != "")
     	  @payload = JSON.parse(payload_body).symbolize_keys
 
-    	  puts "-----------------------------------------------HERE IS OUR PAYLOAD"
     	  pp @payload
-    	  puts "-----------------------------------------------------------------"
     	end
   	end
 
@@ -49,7 +47,7 @@ class RideController < ApplicationController
 		@ride.driver_user_id = @payload[:driver_user_id]
 		@ride.passenger_slots = @payload[:passenger_slots]
 
-		# this creates a row in the rides_users table to record a driver in the table 
+		# this creates a row in the rides_users table to add a driver record to the table 
 		@driver = User.find(@payload[:driver_user_id])
 		@ride.users.push(@driver)
 
@@ -62,10 +60,21 @@ class RideController < ApplicationController
 		}.to_json
 	end
 
+	# update passenger_slots and add passengers to ride ()
+	# put '/:id/adduser' do
+
+	# 	@user_id = 
+
+	# 	@passenger = User.find(@payload[:user_id])
+	# 	@ride.users.push(@passenger)
+	# end
+
 	# delete, or 'cancel', a ride
 	delete '/:id' do
 		@ride = Ride.find params[:id]
 		@ride.destroy
+
+		@ride.users.destroy
 
 		{
 			success: true,
