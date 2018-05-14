@@ -4,11 +4,12 @@ require 'sinatra/activerecord'
 # controllers
 require './controllers/ApplicationController'
 require './controllers/RideController'
-# require './controllers/RideSlotController'
+require './controllers/UserController'
 
 # models
 require './models/RideModel'
-# require './models/RideSlotModel'
+require './models/RideSlotModel'
+require './models/UserModel'
 
 
 #  mapping controllers to routes
@@ -20,6 +21,6 @@ map ('/rides') {
 	run RideController
 }
 
-# map ('/rideslot') {
-# 	run RideSlotController
-# }
+map ('/users') {
+	run UserController
+}
