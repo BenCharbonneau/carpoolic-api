@@ -64,13 +64,28 @@ class RideController < ApplicationController
 	end
 
 	# update passenger_slots and add passengers to ride ()
-	# put '/:id/adduser' do
+	put '/:id/adduser' do
+		@ride = Ride.find(params[:id])
 
-	# 	@user_id = 
+		# decrease passenger_slots number
+		@ride.passenger_slots = @ride.passenger_slots - 1
 
-	# 	@passenger = User.find(@payload[:user_id])
-	# 	@ride.users.push(@passenger)
-	# end
+		@ride.save
+
+		{
+			success: true,
+			message: "you have claimed a slot in ride #{@ride.id}",
+			remaining_passengers_slots: @ride.passenger_slots,
+			ride_details: @ride
+		}.to_json
+
+		# create a users_rides record
+		# @user_id = 
+		# @passenger = User.find(@payload[:user_id])
+		# @ride.users.push(@passenger)
+
+
+	end
 
 	# delete, or 'cancel', a ride
 	delete '/:id' do
