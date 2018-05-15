@@ -17,6 +17,9 @@ INSERT INTO rides (name, pickup, destination, pickup_date, pickup_time, driver_u
 INSERT INTO rides (name, pickup, destination, pickup_date, pickup_time, driver_user_id, passenger_slots) VALUES ('outdoor concert', 'somewhere there', 'soldier field', '2018-05-18', '24:30:00', 4, 3);
 INSERT INTO rides (name, pickup, destination, pickup_date, pickup_time, driver_user_id, passenger_slots) VALUES ('hockeyyyy', 'some place', 'united center', '2018-05-18', '02:00:00', 4, 2);
 INSERT INTO rides (name, pickup, destination, pickup_date, pickup_time, driver_user_id, passenger_slots) VALUES ('conferences', 'some place far', 'mccormick place', '2018-05-18', '09:30:00', 4, 1);
+INSERT INTO rides (name, pickup, destination, pickup_date, pickup_time, driver_user_id, passenger_slots) VALUES ('going to united center', 'some where', 'united center', '2018-05-15', '10:00:00', 1, 2);
+INSERT INTO rides (name, pickup, destination, pickup_date, pickup_time, driver_user_id, passenger_slots) VALUES ('going to united center', 'some where', 'united center', '2018-05-15', '10:00:00', 1, 2);
+INSERT INTO rides (name, pickup, destination, pickup_date, pickup_time, driver_user_id, passenger_slots) VALUES ('going to united center', 'some where', 'united center', '2018-05-15', '10:00:00', 1, 2);
 INSERT INTO rides_users (user_id, ride_id) VALUES (7, 12);
 INSERT INTO rides_users (user_id, ride_id) VALUES (6, 5);
 INSERT INTO rides_users (user_id, ride_id) VALUES (5, 1);
@@ -32,3 +35,5 @@ INSERT INTO rides_users (user_id, ride_id) VALUES (3, 4);
 INSERT INTO rides_users (user_id, ride_id) VALUES (2, 5);
 INSERT INTO rides_users (user_id, ride_id) VALUES (1, 2);
 INSERT INTO rides_users (user_id, ride_id) VALUES (2, 1);
+INSERT INTO rides_users (user_id, ride_id) VALUES (1, 13);
+INSERT INTO rides_users (user_id, ride_id) VALUES (1, 14);
