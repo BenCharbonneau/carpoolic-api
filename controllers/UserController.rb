@@ -8,7 +8,8 @@ class UserController < ApplicationController
 		@user = User.find(params[:id])
 		@rides = @user.rides
 		
-
+		binding.pry
+		
 		@rides.to_json
 	end
 

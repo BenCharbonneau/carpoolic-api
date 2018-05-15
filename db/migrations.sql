@@ -17,7 +17,7 @@ CREATE TABLE rides (
 	pickup VARCHAR(128) NOT NULL,
 	destination VARCHAR(128) NOT NULL,
 	pickup_date DATE NOT NULL,
-	pickup_time TIME NOT NULL,
+	pickup_time VARCHAR(12) NOT NULL,
 	driver_user_id INT REFERENCES users(id),
 	passenger_slots SMALLINT NOT NULL
 );
