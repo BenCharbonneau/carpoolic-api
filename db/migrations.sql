@@ -6,8 +6,8 @@ CREATE DATABASE carpoolic;
 
 CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
-	username VARCHAR(64),
-	password VARCHAR(64),
+	username VARCHAR(64) NOT NULL UNIQUE,
+	password_digest VARCHAR(64),
 	email VARCHAR(64) NOT NULL
 );
 
