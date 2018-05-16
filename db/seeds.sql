@@ -1,10 +1,10 @@
-INSERT INTO users (username, password, email) VALUES ('alyssa', 1234, 'agraham@email.com');
-INSERT INTO users (username, password, email) VALUES ('ben', 1234, 'benc@email.com');
-INSERT INTO users (username, password, email) VALUES ('mace', 1234, 'mace@email.com');
-INSERT INTO users (username, password, email) VALUES ('jim', 1234, 'jim@email.com');
-INSERT INTO users (username, password, email) VALUES ('marie', 1234, 'jim@email.com');
-INSERT INTO users (username, password, email) VALUES ('zoe', 1234, 'jim@email.com');
-INSERT INTO users (username, password, email) VALUES ('noemi', 1234, 'jim@email.com');
+INSERT INTO users (username, password_digest, email) VALUES ('alyssa', 1234, 'agraham@email.com');
+INSERT INTO users (username, password_digest, email) VALUES ('ben', 1234, 'benc@email.com');
+INSERT INTO users (username, password_digest, email) VALUES ('mace', 1234, 'mace@email.com');
+INSERT INTO users (username, password_digest, email) VALUES ('jim', 1234, 'jim@email.com');
+INSERT INTO users (username, password_digest, email) VALUES ('marie', 1234, 'jim@email.com');
+INSERT INTO users (username, password_digest, email) VALUES ('zoe', 1234, 'jim@email.com');
+INSERT INTO users (username, password_digest, email) VALUES ('noemi', 1234, 'jim@email.com');
 INSERT INTO rides (name, pickup, destination, pickup_date, pickup_time, driver_user_id, passenger_slots) VALUES ('going to solider field', 'some place', 'solider field', '2018-05-11', '09:30', 1, 3);
 INSERT INTO rides (name, pickup, destination, pickup_date, pickup_time, driver_user_id, passenger_slots) VALUES ('going to united center', 'some where', 'united center', '2018-05-15', '10:00', 1, 2);
 INSERT INTO rides (name, pickup, destination, pickup_date, pickup_time, driver_user_id, passenger_slots) VALUES ('going to see da bears', 'some place there', 'solider field', '2018-05-19', '13:30', 1, 4);
