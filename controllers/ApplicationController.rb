@@ -14,11 +14,25 @@ class ApplicationController < Sinatra::Base
 	    enable :cross_origin
 	  end
 
-	  set :allow_origin, :any # you can specifiy origins here, we'll just say any
-	  set :allow_methods, [:get, :post, :options, :put, :patch, :delete]
-	  set :allow_credentials, true # session info / API key enable
+	use Rack::Session::Cookie, :key => 'rack.session',
+							   :path => '/',
+							   :secret => 'garden'
 
-	  options '*' do
+	set :allow_origin, :any # you can specifiy origins here, we'll just say any
+	set :allow_methods, [:get, :post, :options, :put, :patch, :delete]
+	set :allow_credentials, true # session info / API key enable
+
+	# filter to allow JSON requests to be processed
+  	before do
+
+    	payload_body = request.body.read
+
+    	if(payload_body != "")
+    	  @payload = JSON.parse(payload_body).symbolize_keys
+    	end
+  	end
+
+	options '*' do
 	    response.headers['Allow'] = 'HEAD, GET, POST, PUT, PATCH, DELETE'
 	    response.headers['Access-Control-Allow-Origin'] = '*'
 	    response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"

@@ -1,16 +1,16 @@
 class RideController < ApplicationController
 
-	# filter to allow JSON requests to be processed
-  	before do
+  	#filter to allow you to process json requests
+	before do
 
-    	payload_body = request.body.read
+		if !session[:logged_in]
+			halt 200, {
+				success: false,
+				message: "You are not logged in."
+			}.to_json
+		end
 
-    	if(payload_body != "")
-    	  @payload = JSON.parse(payload_body).symbolize_keys
-
-    	  pp @payload
-    	end
-  	end
+	end
 
   	# index route to show all rides
 	get '/' do 
@@ -27,14 +27,22 @@ class RideController < ApplicationController
 	# show route to show one ride
 	get '/:id' do
 		@ride = Ride.find(params[:id])
-		@passengers = @ride.users
 
-		{
-			success: true,
-			message: "Found ride id #{@ride.id}",
-			found_ride: @ride,
-			passenger_ids: @passengers
-		}.to_json
+		if @ride
+			@passengers = @ride.users
+
+			{
+				success: true,
+				message: "Found ride id #{@ride.id}",
+				found_ride: @ride,
+				passenger_ids: @passengers
+			}.to_json
+		else
+			{
+				success: false,
+				message: "Could not find ride."
+			}.to_json
+		end
 	end
 
 	# create a new ride
