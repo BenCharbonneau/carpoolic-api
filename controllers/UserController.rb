@@ -23,6 +23,23 @@ class UserController < ApplicationController
 		}
 	end
 
+	get '/:id' do
+		if !session[:logged_in]
+			halt 200, {
+				success: false,
+				message: "You are not logged in."
+			}.to_json
+		end
+
+		@user = User.find(params[:id])
+		
+		{
+			success: true,
+			message: "Successfully got #{@user.username}.",
+			user: @user
+		}.to_json
+	end
+
 	get '/:id/rides' do
 		if !session[:logged_in]
 			halt 200, {
@@ -33,8 +50,6 @@ class UserController < ApplicationController
 
 		@user = User.find(params[:id])
 		@rides = @user.rides
-		
-		# binding.pry
 		
 		@rides.to_json
 	end
@@ -104,8 +119,7 @@ class UserController < ApplicationController
 			}.to_json
 		end
 
-		@users = User.where(id: params[:id])
-		@user = @users[0]
+		@user = User.find(params[:id])
 
 		@user.password = @payload[:password]
 		@user.email = @payload[:email]

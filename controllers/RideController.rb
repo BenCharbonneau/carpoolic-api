@@ -15,7 +15,6 @@ class RideController < ApplicationController
   	# index route to show all rides
 	get '/' do 
 		@rides = Ride.all
-		@rides.to_json
 
 		{
 			success: true,
@@ -47,7 +46,6 @@ class RideController < ApplicationController
 
 	# create a new ride
 	post '/' do
-		pp params
 
 		@ride = Ride.new
 		@ride.name = @payload[:name]

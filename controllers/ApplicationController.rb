@@ -4,7 +4,8 @@ class ApplicationController < Sinatra::Base
 
 	ActiveRecord::Base.establish_connection(
 		:adapter => 'postgresql',
-		:database => 'carpoolic'
+		:database => 'carpoolic',
+		:pool => 20
 	)
 
 	# added for CORS
