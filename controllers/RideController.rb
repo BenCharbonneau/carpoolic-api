@@ -70,7 +70,7 @@ class RideController < ApplicationController
 	end
 
 	# update passenger_slots and add passengers to ride ()
-	put '/:id/adduser' do
+	put '/:id/adduser/:user_id' do
 
 		@ride = Ride.find(params[:id])
 
@@ -78,7 +78,7 @@ class RideController < ApplicationController
 		@ride.passenger_slots = @ride.passenger_slots - 1
 		
 		# creates a record in users_rides table
-		@user = User.find(params[:id])
+		@user = User.find(params[:user_id])
 
 		@ride.users.push(@user)
 
