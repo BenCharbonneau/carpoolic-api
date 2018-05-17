@@ -130,9 +130,13 @@ class UserController < ApplicationController
 
 		@user = User.find(params[:id])
 
-		@user.password = @payload[:password]
+		if @payload[:password].length > 0
+			@user.password = @payload[:password]
+		end
 		@user.email = @payload[:email]
 		@user.username = @payload[:username]
+
+		@user.save
 
 		{
 			success: true,
@@ -151,6 +155,17 @@ class UserController < ApplicationController
 		end
 		
 		@user = User.find params[:id]
+
+		puts "1"
+		pp @user.rides
+
+		@user.rides.each do |ride|
+			ride.destroy
+		end
+
+		puts "2"
+		pp @user.rides
+
 		@user.destroy
 
 		{
