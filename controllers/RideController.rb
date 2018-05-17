@@ -139,6 +139,8 @@ class RideController < ApplicationController
 		@user = User.find(params[:user_id])
 		@ride.users.destroy(@user)
 
+		@ride.save
+
 		{
 			success: true,
 			message: "you deleted user #{@user.username} from ride id \##{@ride.id}",
@@ -152,9 +154,9 @@ class RideController < ApplicationController
 	# edit/update a ride
 	# NOTE: driver's cannot edit destination, driver's ID or pickup date
 	put '/:id' do
-		@rides = Ride.where(id: params[:id])
-
-		@ride = @rides[0]
+		pp params
+		@ride = Ride.find(params[:id])
+		pp @ride
 
 		@ride.name = @payload[:name]
 		@ride.pickup = @payload[:pickup]
