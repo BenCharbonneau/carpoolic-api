@@ -19,8 +19,8 @@ class UserController < ApplicationController
 
 		{
 			success: true,
-			message: "Successfully logged out #{username}"
-		}
+			message: "Successfully logged out."
+		}.to_json
 	end
 
 	get '/:id' do
@@ -51,7 +51,11 @@ class UserController < ApplicationController
 		@user = User.find(params[:id])
 		@rides = @user.rides
 		
-		@rides.to_json
+		{
+			success: true,
+			message: "Successfully found rides for #{@user.username}.",
+			rides: @rides
+		}.to_json
 	end
 
 	post '/register' do
