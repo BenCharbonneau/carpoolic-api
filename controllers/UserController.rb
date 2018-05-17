@@ -9,7 +9,12 @@ class UserController < ApplicationController
 		end
 
 		@users = User.all
-		@users.to_json
+		
+		{
+			success: true,
+			message: "Successfully got users.",
+			users: @users
+		}.to_json
 	end
 
 	get '/logout' do

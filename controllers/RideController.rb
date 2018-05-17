@@ -74,22 +74,43 @@ class RideController < ApplicationController
 
 		@ride = Ride.find(params[:id])
 
-		# decreases the passenger_slots number
-		@ride.passenger_slots = @ride.passenger_slots - 1
+		user_in_ride = false
+
+		@ride.users.each do |user|
+			if user.id.to_s === params[:user_id]
+				user_in_ride = true
+			end
+		end
 		
-		# creates a record in users_rides table
-		@user = User.find(params[:user_id])
+		if user_in_ride 
+			{
+				success: false,
+				message: "You are already going on this ride."
+			}.to_json
+		elsif @ride.passenger_slots > 0
+			# decreases the passenger_slots number
+			@ride.passenger_slots = @ride.passenger_slots - 1
+			
+			# creates a record in users_rides table
+			@user = User.find(params[:user_id])
 
-		@ride.users.push(@user)
+			@ride.users.push(@user)
 
-		@ride.save
+			@ride.save
 
-		{
-			success: true,
-			message: "you have claimed a slot in ride #{@ride.id}",
-			remaining_passengers_slots: @ride.passenger_slots,
-			ride_details: @ride
-		}.to_json
+			{
+				success: true,
+				message: "You have claimed a slot in ride #{@ride.id}.",
+				remaining_passengers_slots: @ride.passenger_slots,
+				ride_details: @ride
+			}.to_json
+		else
+			{
+				success: false,
+				message: "There are no more slots for this ride."
+			}.to_json
+		end
+
 
 	end
 
