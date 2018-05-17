@@ -154,9 +154,8 @@ class RideController < ApplicationController
 	# edit/update a ride
 	# NOTE: driver's cannot edit destination, driver's ID or pickup date
 	put '/:id' do
-		pp params
+
 		@ride = Ride.find(params[:id])
-		pp @ride
 
 		@ride.name = @payload[:name]
 		@ride.pickup = @payload[:pickup]
