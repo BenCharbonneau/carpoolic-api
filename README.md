@@ -4,23 +4,23 @@
 
 ## UserController
 
-* ###URL:###
+* ### URL:
 
   <_users/:id_>
 
-* ###Method:###
+* ### Method:
   
   <_`GET`_>
 
-   ###Required:###
+   ### Required:
  
    `id=[integer]`
 
-* ###Success Response:###
+* ### Success Response:
   
   <_What the status code should be on success. User data is returned._>
 
-    ####Content:####
+    #### Content:
 
     `{ 	success: true,
     	message: "Successfully got Mace.", 
@@ -31,19 +31,19 @@
     		username: "Mace"
     }`
 
-* ###URL:###
+* ### URL:
 
   <_users/register_>
 
-* ###Method:###
+* ### Method:
   
   <_`POST`_>
 
-* ###Success Response:###
+* ### Success Response:
   
   <_What the status code should be on success. User's ride data is returned._>
 
-    ####Content:####
+    #### Content:
 
     `{ 	success: true,
     	message: "Successfully registered as Mace.", 
@@ -51,27 +51,27 @@
     	user_id: 12
     }`
 
-* ###URL:###
+* ### URL:
 
   <_users/:id/rides_>
 
-* ###Method:###
+* ### Method:
   
   <_`GET`_>
   
-*  ###URL Params###
+*  ### URL Params
 
    <_If URL params exist, specify them in accordance with name mentioned in URL section. Separate into optional and required. Document data constraints._> 
 
-   ###Required:###
+   ### Required:
  
    `id=[integer]`
 
-* ###Success Response:###
+* ### Success Response:
   
   <_What the status code should be on success. User's ride data is returned._>
 
-    ####Content:####
+    #### Content:
 
     `{ 	success: true,
     	message: "Successfully found rides for Mace.", 
@@ -81,19 +81,19 @@
     }`
 
 
-* ###URL:###
+* ### URL:
 
   <_users/login_>
 
-* ###Method:###
+* ### Method:
   
   <_`POST`_>
 
-* ###Success Response:###
+* ### Success Response:
   
   <_What the status code should be on success. User's ride data is returned._>
 
-    ####Content:####
+    #### Content:
 
     `{ 	success: true,
     	message: "Successfully logged in as Mace.", 
@@ -101,23 +101,23 @@
     	user_id: 12
     }`
 
-* ###URL:###
+* ### URL:
 
   <_users/:id_>
 
-* ###Method:###
+* ### Method:
   
   <_`PUT`_>
 
-   ###Required:###
+   ### Required:
  
    `id=[integer]`
 
-* ###Success Response:###
+* ###Success Response:
   
   <_What the status code should be on success. User's ride data is returned._>
 
-    ####Content:####
+    #### Content:
 
     `{ 	success: true,
     	message: "You updated user Mace's information.", 
@@ -128,19 +128,19 @@
     		username: "Mace"
     }`
 
-* ###URL:###
+* ### URL:
 
   <_users/:id_>
 
-* ###Method:###
+* ### Method:
   
   <_`DELETE`_>
 
-   ###Required:###
+   ### Required:
  
    `id=[integer]`
 
-* ###Success Response:###
+* ### Success Response:
   
   <_What the status code should be on success. User's ride data is returned._>
 
@@ -151,23 +151,23 @@
     }`
 
 ## RideController
-* ###URL:###
+* ### URL:
 
   <_rides/:id_>
 
-* ###Method:###
+* ### Method:
   
   <_`GET`_>
 
-   ###Required:###
+   ### Required:
  
    `id=[integer]`
 
-* ###Success Response:###
+* ### Success Response:
   
   <_What the status code should be on success. User data is returned._>
 
-    ####Content:####
+    #### Content:
 
     `{ 	success: true,
     	message: "Found ride id 4.", 
@@ -175,45 +175,45 @@
     	passenger_ids:
     }`
 
-* ###URL:###
+* ### URL:
 
   <_rides/_>
 
-* ###Method:###
+* ### Method:
   
   <_`POST`_>
 
 
-* ###Success Response:###
+* ### Success Response:
   
   <_What the status code should be on success. User data is returned._>
 
-    ####Content:####
+    #### Content:
 
     `{ 	success: true,
     	message: "You added ride 5.", 
     	added_ride: {id: 5, name: "test ride", pickup: "downtown", destination: "soldier field", pickup_date: "2018-05-18", pickup_time: "1:00"}
     }`
 
-* ###URL:###
+* ### URL:
 
   <_rides/:id/user_id_>
 
-* ###Method:###
+* ### Method:
   
   <_`PUT`_>
 
-   ###Required:###
+   ### Required:
  
    `id=[integer]`
 
    `user_id=[integer]`
 
-* ###Success Response:###
+* ### Success Response:
   
   <_What the status code should be on success. User data is returned._>
 
-    ####Content:####
+    #### Content:
 
     `{ 	success: true,
     	message: "You have claimed a slot in ride 5.", 
@@ -221,48 +221,48 @@
     	ride_details: {id: 5, name: "test ride", pickup: "downtown", destination: "soldier field", pickup_date: "2018-05-18", pickup_time: "1:00"}
     }`
 
-* ###URL:###
+* ### URL:
 
   <_rides/:id_>
 
-* ###Method:###
+* ### Method:
   
   <_`DELETE`_>
 
-   ###Required:###
+   ### Required:
  
    `id=[integer]`
 
-* ###Success Response:###
+* ### Success Response:
   
   <_What the status code should be on success. User data is returned._>
 
-    ####Content:####
+    #### Content:
 
     `{ 	success: true,
     	message: "You deleted ride id 5.", 
     	deleted_ride: {id: 5, name: "test ride", pickup: "downtown", destination: "soldier field", pickup_date: "2018-05-18", pickup_time: "1:00"}
     }`   
 
-* ###URL:###
+* ### URL:
 
   <_rides/:id/removeuser/:user_id_>
 
-* ###Method:###
+* ### Method:
   
   <_`DELETE`_>
 
-   ###Required:###
+   ### Required:
  
    `id=[integer]`
 
    `user_id=[integer]`
 
-* ###Success Response:###
+* ### Success Response:
   
   <_What the status code should be on success. User data is returned._>
 
-    ####Content:####
+    #### Content:
 
     `{ 	success: true,
     	message: "You deleted user Mace from ride id 5.",
@@ -278,23 +278,23 @@
     	remaining_passengers_slots: 2
     }`
 
-* ###URL:###
+* ### URL:
 
   <_rides/:id_>
 
-* ###Method:###
+* ### Method:
   
   <_`PUT`_>
 
-   ###Required:###
+   ### Required:
  
    `id=[integer]`
 
-* ###Success Response:###
+* ### Success Response:
   
   <_What the status code should be on success. User data is returned._>
 
-    ####Content:####
+    #### Content:
 
     `{ 	success: true,
     	message: "You updated ride id 5.", 
