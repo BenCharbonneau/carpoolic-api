@@ -22,6 +22,7 @@
 
     #### Content:
 
+    javascript
     `{ 	success: true,
     	message: "Successfully got Mace.", 
     	user:  
