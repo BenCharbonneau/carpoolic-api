@@ -2,11 +2,13 @@ class ApplicationController < Sinatra::Base
 	require 'bundler'
 	Bundler.require()
 
-	ActiveRecord::Base.establish_connection(
-		:adapter => 'postgresql',
-		:database => 'carpoolic',
-		:pool => 20
-	)
+	# ActiveRecord::Base.establish_connection(
+	# 	:adapter => 'postgresql',
+	# 	:database => 'carpoolic',
+	# 	:pool => 20
+	# )
+
+	require './config/environments'
 
 	# added for CORS
 	register Sinatra::CrossOrigin
@@ -36,7 +38,7 @@ class ApplicationController < Sinatra::Base
 
 	options '*' do
 	    response.headers['Allow'] = 'HEAD, GET, POST, PUT, PATCH, DELETE'
-	    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+	    response.headers['Access-Control-Allow-Origin'] = request.env["HTTP_ORIGIN"]
 	    response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
 	end
 	# END OF CORS
