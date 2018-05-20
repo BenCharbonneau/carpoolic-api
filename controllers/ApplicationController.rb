@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
 	# 	:pool => 20
 	# )
 
-	require './config/environments'
+	require '../Config/environments'
 
 	# added for CORS
 	register Sinatra::CrossOrigin
