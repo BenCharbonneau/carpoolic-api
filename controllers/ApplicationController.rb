@@ -13,10 +13,11 @@ class ApplicationController < Sinatra::Base
 	# added for CORS
 	register Sinatra::CrossOrigin
 
-	  configure do
-	    enable :cross_origin
-	  end
+    configure do
+    	enable :cross_origin
+    end
 
+    # added sessions
 	use Rack::Session::Cookie, :key => 'rack.session',
 							   :path => '/',
 							   :secret => 'garden'
@@ -43,6 +44,7 @@ class ApplicationController < Sinatra::Base
 	end
 	# END OF CORS
 
+	# Added generic routes
 	get '/' do
 		{
 			success: false,

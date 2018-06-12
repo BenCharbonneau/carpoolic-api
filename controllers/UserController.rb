@@ -1,5 +1,6 @@
 class UserController < ApplicationController
 
+	# Index route to get all users
 	get '/' do
 		if !session[:logged_in]
 			halt 200, {
@@ -17,6 +18,7 @@ class UserController < ApplicationController
 		}.to_json
 	end
 
+	# Log a user out
 	get '/logout' do
 		username = session[:username]
 
@@ -28,6 +30,7 @@ class UserController < ApplicationController
 		}.to_json
 	end
 
+	# Get a specific user
 	get '/:id' do
 		if !session[:logged_in]
 			halt 200, {
@@ -45,6 +48,7 @@ class UserController < ApplicationController
 		}.to_json
 	end
 
+	# Get all rides for a specific user
 	get '/:id/rides' do
 		if !session[:logged_in]
 			halt 200, {
@@ -63,6 +67,7 @@ class UserController < ApplicationController
 		}.to_json
 	end
 
+	# Register a new user
 	post '/register' do
 		@user = User.find_by username: @payload[:username]
 
@@ -92,6 +97,7 @@ class UserController < ApplicationController
 		end
 	end
 
+	# Login an existing user
 	post '/login' do
 		@user = User.find_by username: @payload[:username]
 		password = @payload[:password]
@@ -145,7 +151,7 @@ class UserController < ApplicationController
 		}.to_json
 	end
 
-	# delete a user account 
+	# delete a user account (In progress)
 	delete '/:id' do
 		if !session[:logged_in]
 			halt 200, {
@@ -156,17 +162,15 @@ class UserController < ApplicationController
 		
 		@user = User.find params[:id]
 
-		puts "1"
-		pp @user.rides
-
 		@user.rides.each do |ride|
-			ride.destroy
+			if ride.driver_user_id.to_s == params[:id]
+				ride.destroy
+			end
 		end
 
-		puts "2"
-		pp @user.rides
-
 		@user.destroy
+
+		session.destroy
 
 		{
 			success: true,
